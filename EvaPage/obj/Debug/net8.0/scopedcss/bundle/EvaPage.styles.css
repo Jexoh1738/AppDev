@@ -1,0 +1,166 @@
+/* /Pages/TerminalLogin.razor.rz.scp.css */
+.terminal-bg[b-mzw1awz0ef] {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 894 / 748;
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #c39fdc;
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+/* faint darker band just above the ground, like the reference */
+.terminal-bg[b-mzw1awz0ef]::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 11.2%;
+    height: 5.5%;
+    background: #b98fd4;
+    clip-path: polygon(0 40%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.stripe[b-mzw1awz0ef] {
+    position: absolute;
+    top: 0;
+    width: 11%;
+    height: 26.5%;
+    background: linear-gradient(115deg, #2f5b3d 0%, #6b8c1f 12%, #9ccb2e 55%, #6b8c1f 88%, #2f5b3d 100%);
+}
+
+.stripe-left[b-mzw1awz0ef] {
+    left: 0;
+    clip-path: polygon(0 0, 100% 0, 78% 100%, 0 100%);
+}
+
+.stripe-right[b-mzw1awz0ef] {
+    right: 0;
+    clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.ground[b-mzw1awz0ef] {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 11.2%;
+    background: #d9922c;
+    overflow: hidden;
+}
+
+.ground[b-mzw1awz0ef]::before,
+.ground[b-mzw1awz0ef]::after {
+    content: "";
+    position: absolute;
+    top: -10%;
+    width: 3px;
+    height: 130%;
+    background: #6b4a14;
+}
+
+.ground[b-mzw1awz0ef]::before { left: 12%; transform: rotate(12deg); }
+.ground[b-mzw1awz0ef]::after { left: 82%; transform: rotate(-12deg); }
+
+.emblem[b-mzw1awz0ef] {
+    position: relative;
+    margin: 8.5% auto 0;
+    width: 15.3%;
+    aspect-ratio: 1 / 1;
+    background:
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 4px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 4px),
+        #17182c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #f2f0f7;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+
+.emblem-icon[b-mzw1awz0ef] {
+    width: 45%;
+    height: 45%;
+    color: #f2f0f7;
+}
+
+.emblem-text[b-mzw1awz0ef] {
+    display: flex;
+    gap: 4px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+}
+
+.emblem-motto[b-mzw1awz0ef] {
+    font-size: 0.32rem;
+    letter-spacing: 0.5px;
+    margin-top: 3px;
+    opacity: 0.8;
+    text-align: center;
+    padding: 0 8px;
+}
+
+.login-card[b-mzw1awz0ef] {
+    position: relative;
+    z-index: 2;
+    width: 46%;
+    margin: 3.2% auto 0;
+    background: #17182c;
+    border-radius: 6px;
+    padding: 2% 2.8% 2.2%;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.4);
+    box-sizing: border-box;
+}
+
+.field-label[b-mzw1awz0ef] {
+    display: block;
+    color: #d9d6ea;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.field-input[b-mzw1awz0ef] {
+    width: 100%;
+    padding: 6px 9px;
+    margin-bottom: 18px;
+    border: none;
+    border-radius: 2px;
+    background: #efe9d8;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+}
+
+.button-row[b-mzw1awz0ef] {
+    display: flex;
+    gap: 24px;
+    margin-top: 6px;
+    justify-content: center;
+}
+
+.term-button[b-mzw1awz0ef] {
+    flex: 0 1 auto;
+    min-width: 34%;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #cdd6ef 0%, #9aa8cf 100%);
+    color: #14162b;
+    font-weight: 600;
+    font-size: 0.82rem;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.term-button:hover[b-mzw1awz0ef] {
+    filter: brightness(1.05);
+}
+
+.status-message[b-mzw1awz0ef] {
+    margin-top: 14px;
+    color: #9ccb2e;
+    font-size: 0.8rem;
+    text-align: center;
+}

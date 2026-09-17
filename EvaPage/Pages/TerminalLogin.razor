@@ -1,0 +1,66 @@
+@page "/"
+@page "/login"
+
+
+<div class="terminal-bg">
+    <div class="stripe stripe-left"></div>
+    <div class="stripe stripe-right"></div>
+    <div class="ground"></div>
+
+    <div class="emblem">
+        <svg viewBox="0 0 120 120" class="emblem-icon">
+            <path d="M60 15 C40 25, 30 45, 35 70 C38 90, 50 100, 60 105
+                     C70 100, 82 90, 85 70 C90 45, 80 25, 60 15 Z
+                     M60 30 L60 100" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M45 40 Q60 35 75 40 Q65 55 60 60 Q55 55 45 40 Z" fill="currentColor"/>
+        </svg>
+        <div class="emblem-text">
+            <span>UNIT</span>
+            <span>CTL</span>
+        </div>
+        <div class="emblem-motto">OPERATIONS CONTROL SYSTEM</div>
+    </div>
+
+    <div class="login-card">
+        <EditForm Model="@credentials" OnValidSubmit="HandleEnterUnit">
+            <label class="field-label" for="operatorId">Issued ID:</label>
+            <InputText id="operatorId" class="field-input" @bind-Value="credentials.OperatorId" />
+
+            <label class="field-label" for="password">Password:</label>
+            <InputText id="password" type="password" class="field-input" @bind-Value="credentials.Password" />
+
+            <div class="button-row">
+                <button type="submit" class="term-button">Enter Unit</button>
+                <button type="button" class="term-button" @onclick="HandleRegisterPilot">Register Pilot</button>
+            </div>
+
+            @if (!string.IsNullOrEmpty(statusMessage))
+            {
+                <div class="status-message">@statusMessage</div>
+            }
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private readonly Credentials credentials = new();
+    private string? statusMessage;
+
+    private void HandleEnterUnit()
+    {
+        statusMessage = string.IsNullOrWhiteSpace(credentials.OperatorId)
+            ? "ID required for synchronization."
+            : $"Authenticating {credentials.OperatorId}...";
+    }
+
+    private void HandleRegisterPilot()
+    {
+        statusMessage = "Redirecting to pilot registration...";
+    }
+
+    private class Credentials
+    {
+        public string OperatorId { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+    }
+}
