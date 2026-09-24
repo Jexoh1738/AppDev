@@ -1,18 +1,22 @@
 @page "/"
 @page "/login"
 @layout Layout.EmptyLayout
-
+@inject NavigationManager NavManager
 
 <div class="terminal-bg">
-
     <div class="crt-beam"></div>
-    
+
     <div class="stripe stripe-left"></div>
     <div class="stripe stripe-right"></div>
     <div class="ground"></div>
 
     <div class="emblem">
         <img src="icon-142.png" alt="Custom Emblem" class="emblem-icon" />
+        <div class="emblem-text">
+            <span>UNIT</span>
+            <span>CTL</span>
+        </div>
+        <div class="emblem-motto">OPERATIONS CONTROL SYSTEM</div>
     </div>
 
     <div class="login-card">
@@ -42,9 +46,16 @@
 
     private void HandleEnterUnit()
     {
-        statusMessage = string.IsNullOrWhiteSpace(credentials.OperatorId)
-            ? "ID required for synchronization."
-            : $"Authenticating {credentials.OperatorId}...";
+        // Require text inside OperatorId before transporting
+        if (string.IsNullOrWhiteSpace(credentials.OperatorId))
+        {
+            statusMessage = "ID required for synchronization.";
+        }
+        else
+        {
+            // Direct transport to the test screen
+            NavManager.NavigateTo("/test");
+        }
     }
 
     private void HandleRegisterPilot()

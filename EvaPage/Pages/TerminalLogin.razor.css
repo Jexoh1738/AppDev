@@ -1,3 +1,4 @@
+/* Container locks strictly to 100% of viewport without scrollbars */
 .terminal-bg {
     position: relative;
     width: 100vw;
@@ -5,17 +6,46 @@
     margin: 0;
     padding: 20px 0;
     box-sizing: border-box;
-    overflow: hidden; /* Prevents vertical/horizontal scrollbars */
+    overflow: hidden;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Keeps emblem and card centered vertically */
-    gap: 20px; /* Consistent spacing between logo and login card */
+    justify-content: center;
+    gap: 20px;
 
-    background-color: #0d0614; /* eva-black */
+    background-color: #0b0d12;
 }
 
+/* CRT Scanline Overlay */
+.terminal-bg::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: 
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    z-index: 10;
+    background-size: 100% 4px, 6px 100%;
+    pointer-events: none;
+    animation: crtFlicker 0.15s infinite;
+}
+
+.crt-beam {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(0deg, rgba(0, 255, 204, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 11;
+    animation: scanBeam 8s linear infinite;
+}
+
+/* Faint purple band above ground */
 .terminal-bg::before {
     content: "";
     position: absolute;
@@ -23,31 +53,18 @@
     right: 0;
     bottom: 80px;
     height: 40px;
-    background: #8b5fc4; /* eva-purple-light accent bar over the ground */
+    background: #b98fd4;
     clip-path: polygon(0 40%, 100% 0%, 100% 100%, 0% 100%);
     z-index: 1;
 }
 
-.terminal-bg::after {
-    content: " ";
-    display: block;
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-        linear-gradient(90deg, rgba(242, 169, 59, 0.03), rgba(143, 209, 63, 0.02), rgba(139, 95, 196, 0.04));
-    z-index: 10;
-    background-size: 100% 4px, 6px 100%;
-    pointer-events: none;
-    animation: crtFlicker 0.15s infinite;
-}
-
+/* Corner Stripes */
 .stripe {
     position: absolute;
     top: 0;
     width: 120px;
     height: 200px;
-    background: linear-gradient(115deg, #2a1240 0%, #4c7a1f 12%, #8fd13f 55%, #4c7a1f 88%, #2a1240 100%);
+    background: linear-gradient(115deg, #2f5b3d 0%, #6b8c1f 12%, #9ccb2e 55%, #6b8c1f 88%, #2f5b3d 100%);
     z-index: 1;
 }
 
@@ -61,13 +78,14 @@
     clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%);
 }
 
+/* Ground floor */
 .ground {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     height: 80px;
-    background: #f2a93b; /* eva-orange, EVA-01's core/eye color */
+    background: #d9922c;
     overflow: hidden;
     z-index: 1;
 }
@@ -79,91 +97,86 @@
     top: -10%;
     width: 3px;
     height: 130%;
-    background: #6e3e10;
+    background: #6b4a14;
 }
 
 .ground::before { left: 12%; transform: rotate(12deg); }
 .ground::after { left: 82%; transform: rotate(-12deg); }
 
+/* --- EXPANDED EMBLEM / LOGO BOX --- */
 .emblem {
     position: relative;
     z-index: 2;
-    margin: 0; /* Clear automatic percentage margins */
-    width: 140px;
-    height: 140px;
+    margin: 0;
+    width: 220px;            /* Increased from 140px for better readability */
+    height: 220px;           /* Increased from 140px */
     background:
-        repeating-linear-gradient(0deg, rgba(201,168,232,0.05) 0 2px, transparent 2px 4px),
-        repeating-linear-gradient(90deg, rgba(201,168,232,0.05) 0 2px, transparent 2px 4px),
-        linear-gradient(155deg, #4a2470 0%, #2a1240 55%, #0d0614 100%);
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 4px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 4px),
+        #17182c;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #ece5f2;
-    border: 1px solid rgba(201,168,232,0.4);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.5), 0 0 22px rgba(139,95,196,0.35);
+    color: #f2f0f7;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+    border-radius: 4px;
 }
 
 .emblem-icon {
-    width: 80%;
-    height: 80%;
+    width: 88%;              /* Gives image more breathing room */
+    height: 88%;
     object-fit: contain;
 }
 
-.emblem-text {
-    display: flex;
-    gap: 4px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    font-size: 0.85rem;
-}
-
-.emblem-motto {
-    font-size: 0.32rem;
-    letter-spacing: 0.5px;
-    margin-top: 3px;
-    opacity: 0.8;
-    text-align: center;
-    padding: 0 8px;
-}
-
+/* --- LOGIN CARD & FULL-WIDTH INPUTS --- */
 .login-card {
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 420px; /* Fixed maximum width prevents overly wide box */
+    max-width: 480px;        /* Slightly wider card container */
     margin: 0;
-    background: linear-gradient(180deg, rgba(74,36,112,0.92) 0%, rgba(13,6,20,0.96) 100%);
-    border: 1px solid rgba(143,209,63,0.3);
+    background: #17182c;
     border-radius: 6px;
-    padding: 24px;
-    box-shadow: 0 10px 26px rgba(0,0,0,0.55), 0 0 0 1px rgba(242,169,59,0.08);
+    padding: 28px 32px;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.4);
     box-sizing: border-box;
 }
 
 .field-label {
     display: block;
-    color: #c9a8e8; /* eva-lilac */
-    font-size: 0.85rem;
-    margin-bottom: 5px;
+    color: #d9d6ea;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
 }
 
+/* Input Fields with Hover and Active Glow Effects */
 .field-input {
     width: 100%;
-    padding: 8px 12px;
-    margin-bottom: 16px;
-    border: none;
-    border-left: 3px solid #8fd13f; /* eva-green edge, matches Unit-01 joints */
-    border-radius: 2px;
-    background: #ece5f2; /* eva-bone */
-    font-size: 0.85rem;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: #efe9d8;
+    color: #17182c;
+    font-size: 0.9rem;
     box-sizing: border-box;
+    transition: all 0.25s ease-in-out;
+    outline: none;
 }
 
+/* Glowing effect on Mouse Hover */
+.field-input:hover {
+    background: #ffffff;
+    border-color: #9ccb2e;
+    box-shadow: 0 0 10px rgba(156, 203, 46, 0.5);
+}
+
+/* Glowing effect when Active/Focused by typing */
 .field-input:focus {
-    outline: none;
-    border-left-color: #f2a93b; /* eva-orange on focus */
-    box-shadow: 0 0 0 1px rgba(242,169,59,0.5);
+    background: #ffffff;
+    border-color: #00ffcc;
+    box-shadow: 0 0 14px rgba(0, 255, 204, 0.8);
 }
 
 .button-row {
@@ -178,58 +191,25 @@
     padding: 10px 18px;
     border: none;
     border-radius: 20px;
-    background: linear-gradient(180deg, #8fd13f 0%, #4c7a1f 100%);
-    color: #10240a;
+    background: linear-gradient(180deg, #cdd6ef 0%, #9aa8cf 100%);
+    color: #14162b;
     font-weight: 600;
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-}
-
-/* Second button (Register Pilot) reads as a secondary action, outlined in the eye/core orange */
-.button-row .term-button:last-child {
-    background: transparent;
-    border: 1px solid #f2a93b;
-    color: #f2a93b;
-    box-shadow: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    transition: transform 0.15s ease, filter 0.15s ease;
 }
 
 .term-button:hover {
-    filter: brightness(1.12);
+    filter: brightness(1.1);
+    transform: translateY(-1px);
 }
 
 .status-message {
     margin-top: 14px;
-    color: #8fd13f; /* eva-green */
-    font-size: 0.8rem;
+    color: #9ccb2e;
+    font-size: 0.85rem;
     text-align: center;
-}
-
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-#app {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Optional moving scanline beam */
-.crt-beam {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background: linear-gradient(0deg, rgba(242, 169, 59, 0.06) 0%, rgba(0, 0, 0, 0) 100%);
-    opacity: 0.6;
-    pointer-events: none;
-    z-index: 11;
-    animation: scanBeam 8s linear infinite;
 }
 
 @keyframes crtFlicker {

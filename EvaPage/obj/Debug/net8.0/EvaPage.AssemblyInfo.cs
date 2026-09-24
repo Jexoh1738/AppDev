@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EvaPage")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15f5580606867daa4f20d50472b1e4d8d2e1c7b1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0744c0214901bf8017580132855291a41b8fb562")]
 [assembly: System.Reflection.AssemblyProductAttribute("EvaPage")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EvaPage")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
