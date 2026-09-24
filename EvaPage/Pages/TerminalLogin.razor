@@ -53,14 +53,14 @@
         }
         else
         {
-            // Direct transport to the test screen
             NavManager.NavigateTo("/test");
         }
     }
 
     private void HandleRegisterPilot()
     {
-        statusMessage = "Redirecting to pilot registration...";
+        // Transports directly to test page when Register Pilot is clicked
+        NavManager.NavigateTo("/test");
     }
 
     private class Credentials
@@ -69,3 +69,4 @@
         public string Password { get; set; } = string.Empty;
     }
 }
+
