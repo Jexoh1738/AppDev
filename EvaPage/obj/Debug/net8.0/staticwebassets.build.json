@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YfygfVO05Ex6TrrBx56S/fybv0v4fxM9SAdhcARF6ww=",
+  "Hash": "ntmcSVNyC/cN9KkOfy4wvMF5NAYQ4xrFjOyx8f1/hfw=",
   "Source": "EvaPage",
   "BasePath": "/",
   "Mode": "Root",
@@ -7824,6 +7824,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\app.css"
+    },
+    {
+      "Identity": "C:\\Users\\L23Y16W42\\Desktop\\AppDev\\EvaPage\\wwwroot\\icon-142.png",
+      "SourceId": "EvaPage",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\L23Y16W42\\Desktop\\AppDev\\EvaPage\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "icon-142.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icon-142.png"
     },
     {
       "Identity": "C:\\Users\\L23Y16W42\\Desktop\\AppDev\\EvaPage\\wwwroot\\icon-192.png",

@@ -1028,3 +1028,4 @@ C:\Users\L23Y16W42\Desktop\AppDev\EvaPage\obj\Debug\net8.0\EvaPage.dll
 C:\Users\L23Y16W42\Desktop\AppDev\EvaPage\obj\Debug\net8.0\refint\EvaPage.dll
 C:\Users\L23Y16W42\Desktop\AppDev\EvaPage\obj\Debug\net8.0\EvaPage.pdb
 C:\Users\L23Y16W42\Desktop\AppDev\EvaPage\obj\Debug\net8.0\ref\EvaPage.dll
+C:\Users\L23Y16W42\Desktop\AppDev\EvaPage\obj\Debug\net8.0\EvaPage.sourcelink.json
